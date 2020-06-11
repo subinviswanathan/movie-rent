@@ -9,12 +9,14 @@ const customerSchema = mongoose.Schema({
 	},
 	name: {
 		type: String,
+		trim: true,
 		required: true,
 		minlength: 5,
 		maxlength: 20
 	},
 	phone: {
 		type: String,
+		trim: true,
 		required: true,
 		minlength: 5,
 		maxlength: 20
