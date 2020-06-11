@@ -1,9 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const genres = require('./routes/genres');
-
-//mongoose.connect('mongodb')
 const app = express();
+
+mongoose
+	.connect('mongodb://localhost/movie-rent', {
+		useNewUrlParser: true,
+		useFindAndModify: false,
+		useUnifiedTopology: true,
+	})
+	.then(() => console.log('Connected to MongoDB...'))
+	.catch(err => console.error(err));
 
 app.use(express.json());
 app.use('/api/genres', genres);
