@@ -38,7 +38,7 @@ const validateMovie = movie => {
 		dailyRentalRate: Joi.number().min(0).required()
 	});
 
-	return schema.validate(value);
+	return schema.validate(movie);
 };
 
 exports.Movie = Movie;

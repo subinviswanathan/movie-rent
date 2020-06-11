@@ -63,7 +63,7 @@ const validateRental = rental => {
 		movieId: Joi.string().required()
 	});
 
-	return schema.validate(value);
+	return schema.validate(rental);
 };
 
 exports.Rental = Rental;
