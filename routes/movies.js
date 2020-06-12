@@ -1,6 +1,6 @@
 const express = require('express');
-const { Movie, validate } = require('../model/movie');
-const { Genre } = require('../model/genre');
+const { Movie, validate } = require('../models/movie');
+const { Genre } = require('../models/genre');
 
 const router = express.Router();
 
@@ -33,8 +33,8 @@ router.post('/', async (req, res) => {
 		numberInStock: req.body.numberInStock,
 		dailyRentalRate: req.body.dailyRentalRate
 	});
-	console.log(movie);
-	movie = await movie.save();
+	await movie.save();
+
 	res.send(movie);
 });
 
