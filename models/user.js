@@ -25,12 +25,13 @@ const userSchema = mongoose.Schema({
 		required: true,
 		minlength: 5,
 		maxlength: 1024
-	}
+	},
+	isAdmin: Boolean
 });
 
 userSchema.methods.generateAuthToken = function () {
 	const token = jwt.sign(
-		{ _id: this._id },
+		{ _id: this._id, isAdmin: this.isAdmin },
 		config.get('jwtPrivateKey') || 'movie_rent_jwtPrivateKey'
 	);
 
