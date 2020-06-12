@@ -8,8 +8,13 @@ const movies = require('./routes/movies');
 const rentals = require('./routes/rentals');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+const config = require('config');
 const app = express();
-
+// if (!config.get('jwtPrivateKey')) {
+// 	console.error('Fatal error. JWT private key not defined...');
+// 	process.exit(1);
+// 	//process.exit(0); This is for success.
+// }
 mongoose
 	.connect('mongodb://localhost/movie-rent', {
 		useNewUrlParser: true,
