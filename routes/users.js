@@ -18,7 +18,10 @@ router.post('/', async (req, res) => {
 	user.password = await bcrypt.hash(user.password, salt);
 	await user.save();
 
-	res.send(_.pick(user, ['email', 'name', '_id']));
+	const token = user.generateAuthToken();
+	res
+		.header('x-auth-token', token)
+		.send(_.pick(user, ['email', 'name', '_id']));
 });
 
 module.exports = router;
