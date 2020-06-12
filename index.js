@@ -15,9 +15,19 @@ const config = require('config');
 const error = require('./middleware/error');
 const app = express();
 
-process.on('uncaughtException', () => {
+process.on('uncaughtException', ex => {
+	winston.error(ex.message, ex);
+	process.exit(1);
+});
+
+winston.exceptions.handle(
+	new winston.transports.File({ filename: 'uncaughtExceptions.log' })
+);
+
+process.on('unhandledRejection', ex => {
 	console.log('WE GOT AN UNCAUGHT EXCEPTION...');
 	winston.error(ex.message, ex);
+	process.exit(1);
 });
 
 winston.add(new winston.transports.File({ filename: 'logfile.log' }));
