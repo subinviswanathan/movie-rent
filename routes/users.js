@@ -1,5 +1,6 @@
 const express = require('express');
 const _ = require('lodash');
+const auth = require('../middleware/auth');
 const { User, validate } = require('../models/user');
 const bcrypt = require('bcrypt'); // salt is random string added before or after so the resulting hash password is different based on salt used.
 
@@ -22,6 +23,11 @@ router.post('/', async (req, res) => {
 	res
 		.header('x-auth-token', token)
 		.send(_.pick(user, ['email', 'name', '_id']));
+});
+
+router.get('/me', auth, async (req, res) => {
+	const user = User.findById(req.user._id).select('-password');
+	res.send(user);
 });
 
 module.exports = router;
