@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Joi = require('@hapi/joi');
 Joi.objectId = require('joi-objectid')(Joi);
+require('express-async-errors');
 const genres = require('./routes/genres');
 const customers = require('./routes/customer');
 const movies = require('./routes/movies');
