@@ -4,7 +4,7 @@
   "description": "This is to rent the movies",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose --coverage"
   },
   "repository": {
     "type": "git",
