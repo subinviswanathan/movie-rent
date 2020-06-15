@@ -1,13 +1,13 @@
 const request = require('supertest');
-const { Genre } = require('../../models/genre');
-const { User } = require('../../models/user');
+const { Genre } = require('../../../models/genre');
+const { User } = require('../../../models/user');
 const mongoose = require('mongoose');
 
 let server;
 
 describe('/api/genres', () => {
 	beforeEach(() => {
-		server = require('../../index');
+		server = require('../../../index');
 	});
 
 	afterEach(async () => {
@@ -65,8 +65,8 @@ describe('/api/genres', () => {
 			name = 'genre1';
 		});
 
-		const exec = async () =>
-			await request(server)
+		const exec = () =>
+			request(server)
 				.post('/api/genres/')
 				.set('x-auth-token', token)
 				.send({ name });
