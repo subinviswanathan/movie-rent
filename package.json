@@ -4,7 +4,7 @@
   "description": "This is to rent the movies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll --verbose"
   },
   "repository": {
     "type": "git",
@@ -32,5 +32,8 @@
     "mongoose": "^5.9.18",
     "winston": "^3.2.1",
     "winston-mongodb": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
   }
 }
